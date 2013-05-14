@@ -7,6 +7,7 @@
 //
 
 #import "HypnosisterAppDelegate.h"
+#import "HypnosisView.h"
 
 @implementation HypnosisterAppDelegate
 
@@ -14,6 +15,22 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    HypnosisView *view = [[HypnosisView alloc] initWithFrame:[[self window] bounds]];
+    
+    [[self window] addSubview:view];
+    
+    //Set this view as the first responder
+    BOOL success = [view becomeFirstResponder];
+    if (success)
+    {
+        NSLog(@"HypnosisView became first responder");
+    }
+    else
+    {
+        NSLog(@"Could not become first responder");
+    }
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
